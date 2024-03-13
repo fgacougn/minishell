@@ -9,7 +9,7 @@ ft_lstadd_back_bonus.c ft_lstmap_bonus.c ft_memmove.c ft_putnbr_fd.c ft_striteri
 ft_get_zeros.c ft_is_in.c ft_lstadd_front_bonus.c ft_lstnew_bonus.c ft_memset.c ft_putstr_fd.c ft_strjoin.c ft_strnstr.c ft_uitoa.c\
 ft_llatoi.c ft_puterror.c ft_abs.c get_next_line.c get_next_line_utils.c ft_str_startwith.c ft_get_envp.c ft_str_ijoin.c ft_fabs.c\
 ft_datoi.c ft_imax.c ft_fmin.c ft_imin.c ft_irel.c ft_iid.c ft_dmin.c ft_dmax.c ft_printf_split.c ft_splitcpy.c ft_splitcpy_plus.c\
-ft_splitcpy_minus.c ft_strbuild.c ft_is_insplit.c ft_strndup.c ft_hach_find.c ft_strtruetrim.c ft_split_cpt.c
+ft_splitcpy_minus.c ft_strbuild.c ft_is_insplit.c ft_strndup.c ft_hach_find.c ft_strtruetrim.c ft_split_cpt.c ft_strcmp.c
 CIBLES=$(SOURCES:.c=.o)
 NAME=libft.a
 

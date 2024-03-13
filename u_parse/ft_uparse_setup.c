@@ -1,29 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_buildin_load.c                                  :+:      :+:    :+:   */
+/*   ft_uparse_setup.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fgacougn <fgacougn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/20 16:06:47 by fgacougn          #+#    #+#             */
-/*   Updated: 2024/03/13 12:47:47 by fgacougn         ###   ########.fr       */
+/*   Created: 2024/03/13 10:32:24 by fgacougn          #+#    #+#             */
+/*   Updated: 2024/03/13 10:32:31 by fgacougn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	ft_buildin_load(void)
+int	ft_uparse_setup(void)
 {
-	printf("pop\n");
-	s()->e.f_buildin[MS_ECHO] = &ft_echo;
-	s()->e.f_buildin[MS_PWD] = &ft_pwd;
-	s()->e.f_buildin[MS_EXPORT] = &ft_export;
-	s()->e.f_buildin[MS_UNSET] = &ft_unset;
-	s()->e.f_buildin[MS_ENV] = &ft_env;
-	s()->e.f_buildin[MS_EXIT] = &ft_exit;
-	s()->e.f_buildin[MS_CD] = &ft_cd;
-	s()->e.buildin = MS_NOBI;
-	ft_uparse_setup();
-	s()->e.fd_out = STDOUT_FILENO;
+	s()->u.f_parse[0] = &ft_cmd;
+	s()->u.f_parse[1] = &ft_less;
+	s()->u.f_parse[2] = &ft_more;
+	s()->u.f_parse[3] = &ft_pipe;
+	s()->u.f_parse[4] = &ft_openpar;
+	s()->u.f_parse[5] = &ft_closepar;
+	s()->u.f_parse[6] = &ft_and;
+	s()->u.f_parse[7] = &ft_semicol;
 	return (SUCCESS);
 }

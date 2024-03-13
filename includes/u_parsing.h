@@ -6,7 +6,7 @@
 /*   By: fgacougn <fgacougn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 10:58:33 by fgacougn          #+#    #+#             */
-/*   Updated: 2024/03/05 17:34:15 by fgacougn         ###   ########.fr       */
+/*   Updated: 2024/03/13 11:37:31 by fgacougn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,13 @@ typedef struct s_cmd
 	int				pipein;
 	int				heredoc;
 	char			*limiter;
+	int				buildin;
 	t_here_line		*here_lines;
 	t_here_line		*last;
 	char			**arglines;
 	struct s_cmd	*next;
 	struct s_cmd	*dep;
+	struct s_cmd	*from;
 }					t_cmd;
 
 typedef struct s_u_parsing
@@ -78,5 +80,7 @@ int					ft_here_doc(void);
 int					ft_closeinfile(void);
 int					ft_read_hdoc(void);
 int					ft_lst_print_cmd(t_cmd *command);
+int					ft_uparse_setup(void);
+int					ft_get_buildin(void);
 
 #endif

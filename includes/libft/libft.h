@@ -147,4 +147,6 @@ char	*ft_hach_find(char *tofind, char **hach_map);
 char	*ft_strtruetrim(char const *s1, char const *set);
 int	ft_split_cpt(char **split);
 
+int	ft_strcmp(const char *s1, const char *s2);
+
 #endif

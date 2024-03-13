@@ -1,29 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_buildin_load.c                                  :+:      :+:    :+:   */
+/*   ft_next_cmd.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fgacougn <fgacougn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/20 16:06:47 by fgacougn          #+#    #+#             */
-/*   Updated: 2024/03/13 12:47:47 by fgacougn         ###   ########.fr       */
+/*   Created: 2024/03/13 12:13:03 by fgacougn          #+#    #+#             */
+/*   Updated: 2024/03/13 12:14:58 by fgacougn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	ft_buildin_load(void)
+int	ft_next_cmd(void)
 {
-	printf("pop\n");
-	s()->e.f_buildin[MS_ECHO] = &ft_echo;
-	s()->e.f_buildin[MS_PWD] = &ft_pwd;
-	s()->e.f_buildin[MS_EXPORT] = &ft_export;
-	s()->e.f_buildin[MS_UNSET] = &ft_unset;
-	s()->e.f_buildin[MS_ENV] = &ft_env;
-	s()->e.f_buildin[MS_EXIT] = &ft_exit;
-	s()->e.f_buildin[MS_CD] = &ft_cd;
-	s()->e.buildin = MS_NOBI;
-	ft_uparse_setup();
-	s()->e.fd_out = STDOUT_FILENO;
+	if (s()->u.current->dep)
+	{
+		s()->u.current = s()->u.current->dep;
+		return (SUCCESS);
+	}
+	if (s()->u.current->next)
+	{
+		s()->u.current = s()->u.current->next;
+		return (SUCCESS);
+	}
+	if (s()->u.current->from)
+	{
+		s()->u.current = s()->u.current->from;
+		return (SUCCESS);
+	}
+	s()->u.current = 0;
 	return (SUCCESS);
 }

@@ -1,22 +1,19 @@
-SRC=main.c ft_get_shell.c ft_minishell.c ft_free_shell.c  ft_buildin_load.c
+SRC=main.c ft_get_shell.c ft_minishell.c ft_free_shell.c  ft_buildin_load.c ft_next_cmd.c
 OBJ=$(SRC:.c=.o)
 NAME=../minishell
 CC=cc
 CFLAGS=-Wall -Werror -Wextra -g3 -I../includes 
 EXEC=../exec/exec.so
-INCLUDES= -lparsing -lexec -lu_parsing -lreadline -lft
+INCLUDES=-lexec -lu_parsing -lreadline -lft
 
-$(NAME) : $(OBJ) libexec.a libparsing.a libft.a libu_parsing.a ../includes/exec.h ../includes/minishell.h ../includes/parsing.h ../includes/u_parsing.h ../includes/libft/libft.h
+$(NAME) : $(OBJ) libexec.a libft.a libu_parsing.a ../includes/exec.h ../includes/minishell.h ../includes/u_parsing.h ../includes/libft/libft.h
 	$(CC) -I../includes  $(OBJ) $(CFLAGS) -L. $(INCLUDES) -o $(NAME)
 	
-%.o: %.c ../includes/exec.h ../includes/minishell.h ../includes/parsing.h ../includes/u_parsing.h ../includes/libft/libft.h
+%.o: %.c ../includes/exec.h ../includes/minishell.h ../includes/u_parsing.h ../includes/libft/libft.h
 	$(CC) -o $@ -c $< $(CFLAGS)
 
 ../includes/exec.h : 
 	make libexec.a
-
-../includes/parsing.h :
-	make libparsing.a
 
 ../includes/u_parsing.h :
 	make libu_parsing.a
